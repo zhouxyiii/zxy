@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace 命名空间，当前文档的一个标识符-->
+<mapper namespace="com.oa.bean.UserMapper">
+
+    <!--resultMap  结果集的映射-->
+    <!--id  是当前resultMap的唯一标识-->
+    <!--type  是结果集的类型-->
+    <resultMap id="UserResultMap" type="com.oa.bean.User">
+        <id property="userId" column="user_id" javaType="java.lang.Integer"/>
+        <result property="userName" column="user_name" javaType="java.lang.String"/>
+        <result property="userPassword" column="user_password" javaType="java.lang.String"/>
+        <result property="userSex" column="user_sex" javaType="java.lang.String"/>
+        <result property="userEmail" column="user_email" javaType="java.lang.String"/>
+
+        <!--多对一-->
+        <association property="departmentBean" javaType="com.oa.bean.Department">
+            <id property="departmentId" column="department_id" javaType="java.lang.Integer"/>
+            <result property="departmentName" column="department_name" javaType="java.lang.String"/>
+        </association>
+
+    </resultMap>
+
+    <!--查询语句-->
+    <select id="queryUser" resultMap="UserResultMap">
+        select * from oa_user
+    </select>
+
+    <select id="queryUserById" resultMap="UserResultMap">
+        SELECT * FROM oa_user where user_name=#{user_name}
+    </select>
+
+    <select id="checkUser" resultMap="UserResultMap">
+        SELECT * from oa_user WHERE user_name =#{userName} AND user_password=#{userPassword}
+    </select>
+
+</mapper>

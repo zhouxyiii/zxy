@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace 命名空间，当前文档的一个标识符-->
+<mapper namespace="com.oa.bean.NoticeMapper">
+
+    <!--resultMap  结果集的映射-->
+    <!--id  是当前resultMap的唯一标识-->
+    <!--type  是结果集的类型-->
+    <resultMap id="UserResultMap" type="com.oa.bean.Notice">
+        <id property="noticeId" column="notice_id" javaType="java.lang.Integer"/>
+        <result property="noticeTitle" column="notice_title" javaType="java.lang.String"/>
+        <result property="noticeContent" column="notice_content" javaType="java.lang.String"/>
+        <result property="noticeStartTime" column="notice_start_time"/>
+        <result property="noticeEndTime" column="notice_end_time" />
+
+
+    </resultMap>
+
+
+</mapper>
